@@ -25,7 +25,8 @@ const Home = () => {
                     
                     {isAuthenticated ? (
                         <div>
-                        <Button href="/account" variant="danger">Account</Button>
+                        <Link to="/account" className="btn btn-danger" variant="danger">Account</Link>
+                        <Link to="/study" className="btn btn-primary large" variant="primary">Enter the Mansion</Link>
                         <Button onClick ={() => logout()} variant="success">Log Out</Button>
                         </div>
                       ) : (
