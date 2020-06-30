@@ -8,7 +8,6 @@ import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row'
-
 import Image from 'react-bootstrap/Image'
 import logo from '../auth0-logo.svg'
 
