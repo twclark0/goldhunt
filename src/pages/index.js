@@ -13,8 +13,6 @@ import logo from '../auth0-logo.svg'
 
 import { useAuth0 } from "@auth0/auth0-react"
 
-
-// Importing Sass with Bootstrap CSS
 import '../App.scss';
 const Home = () => {
     const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
