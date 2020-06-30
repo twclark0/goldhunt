@@ -49,7 +49,7 @@ const Study = () => {
           <Card.Title>Two sides to every story</Card.Title>
 
           <Card.Text>
-            Inside Vittorio's library, you get the sense that rarely does someone linger here. The books are used but the chairs aren't. The cleanest thing, asides from the books is the wall behind the staircase. What's that you see?
+            Inside Vittorio's library, you get the sense that rarely does someone linger here. The books are used but the chairs are not. The cleanest thing aside from the books is the wall behind the staircase. What's that you see?
             <br/>
             <Button variant="light" size="sm" onClick={toggle}>Inspect Background</Button>
           </Card.Text>
