@@ -18,11 +18,11 @@ const UserWidget = () => {
     const getUserMetadata = async () => {
       try {
         const accessToken = await getAccessTokenSilently({
-          audience: `https://dev-rurq0kgy.us.auth0.com/api/v2/`,
+          audience: `${domain}/api/v2/`,
           scope: "read:current_user update:current_user_metadata create:current_user_metadata",
         });
 
-        const userDetailsByIdUrl = `https://dev-rurq0kgy.us.auth0.com/api/v2/users/${user.sub}`;
+        const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
 
         const metadataResponse = await fetch(userDetailsByIdUrl, {
           headers: {

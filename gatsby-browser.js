@@ -11,7 +11,7 @@ exports.wrapRootElement = ({ element }) => {
 		<Auth0Provider
 	    domain={authDomain}
 	    clientId={authClientID}
-	    redirectUri={callbackURL}
+	    redirectUri={window.location.origin}
 	    audience={audienceURL}
 	    scope="read:current_user update:current_user_metadata"
 	    >
