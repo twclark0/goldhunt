@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row'
 
 import Image from 'react-bootstrap/Image'
+import logo from '../auth0-logo.svg'
 
 import { useAuth0 } from "@auth0/auth0-react"
 
@@ -53,6 +54,7 @@ const Home = () => {
                             <Button className="ml-5" onClick ={() => logout()} variant="success">Log Out</Button>
                             </div>
                         )}
+                        <small>Built for Identiverse by <Image src={logo} style={{width:60}} rounded /></small>
                     </Card.Footer>
                 </Card>
             </Col>
