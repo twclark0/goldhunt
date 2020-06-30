@@ -11,7 +11,7 @@ import Card from 'react-bootstrap/Card';
 import Layout from '../components/layout';
 import PictureModal from '../components/PictureModal';
 
-const puzzleAnswer = process.env.OFFICE_ANSWER || "fast";
+const puzzleAnswer = process.env.GATSBY_OFFICE_ANSWER;
 
 const Office = () => {
   const [modalShow, setModalShow] = useState(false);

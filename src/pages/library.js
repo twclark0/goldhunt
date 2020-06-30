@@ -12,7 +12,7 @@ import Layout from '../components/layout';
 import PictureModal from '../components/PictureModal';
 import AuthTips from '../components/AuthTips';
 
-const puzzleAnswer = process.env.Library || "secure";
+const puzzleAnswer = process.env.GATSBY_LIBRARY_ANSWER;
 
 const Library = () => {
   const answers = {

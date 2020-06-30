@@ -11,7 +11,7 @@ import Card from 'react-bootstrap/Card';
 import Layout from '../components/layout';
 import PictureModal from '../components/PictureModal';
 
-const puzzleAnswer = process.env.SAFE_ANSWER;
+const puzzleAnswer = process.env.GATSBY_SAFE_ANSWER;
 
 const Safe = () => {
   const answers = {

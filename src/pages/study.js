@@ -11,7 +11,7 @@ import Layout from '../components/layout';
 import PictureModal from '../components/PictureModal';
 import AuthTips from '../components/AuthTips';
 
-const puzzleAnswer = process.env.STUDY_ANSWER;
+const puzzleAnswer = process.env.GATSBY_STUDY_ANSWER;
 const Study = () => {
   const answers = {
     num0: "",
