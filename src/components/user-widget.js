@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const domain = process.env.AUTH0_DOMAIN;
+const domain = process.env.GATSBY_AUTH0_DOMAIN;
 
 const UserWidget = () => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
