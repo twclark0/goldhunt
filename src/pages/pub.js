@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Layout from '../components/layout';
 import PictureModal from '../components/PictureModal';
+import AuthTips from '../components/AuthTips';
 
 const puzzleAnswer = process.env.PUB || [0,1,0,1,0,0,1,0,1];
 
@@ -162,6 +163,9 @@ const Pub = () => {
         </Card.Body>
         <Card.Footer className="text-muted">Flip the switches.</Card.Footer>
       </Card>
+      <AuthTips title="Secure access for everyone, but not just anyone." cta="Learn more" url="https://auth0.com/security">
+        Auth0 understands that your customer's safety is top of mind. We've built a developer-first product that allows you to innovate on your onboarding flow without compromising security. We'll keep the locks up-to-date while you remodel the house :)
+      </AuthTips>
       <PictureModal show={modalShow} onHide={toggle} picture={'./pub.gif'} size="xl" />
     </Layout>
     </div>

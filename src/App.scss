@@ -4,6 +4,11 @@
   text-align: center;
 }
 
+body {
+  background-size:cover;
+  background-image: url('/floorplan.png');
+}
+
 span {
   &.dangerText {
     color: #dc3545;
@@ -16,23 +21,23 @@ span {
 }
 
 .mt-puz {
-	margin-top: ($spacer * 10);
+  margin-top: ($spacer * 10);
 }
 .background {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	background-size:cover;
-	&.study {
-		background-image: url(./stairs.gif);
-	}
-	&.pub {
-		background-image: url('/pub.gif');
-	}
-	&.library {
-		background-image: url('/bookshelf.gif');
-	}
-	&.office {
-		background-image: url('/office.png');
-	}
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-size:cover;
+  &.study {
+    background-image: url(./stairs.gif);
+  }
+  &.pub {
+    background-image: url('/pub.gif');
+  }
+  &.library {
+    background-image: url('/bookshelf.gif');
+  }
+  &.office {
+    background-image: url('/office.png');
+  }
 }

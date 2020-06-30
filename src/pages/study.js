@@ -9,8 +9,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Layout from '../components/layout';
 import PictureModal from '../components/PictureModal';
+import AuthTips from '../components/AuthTips';
 
-const puzzleAnswer = process.env.STUDY;
+const puzzleAnswer = process.env.STUDY_ANSWER;
 const Study = () => {
   const answers = {
     num0: "",
@@ -74,6 +75,9 @@ const Study = () => {
         </Card.Body>
         <Card.Footer className="text-muted">Enter the 5-digit code</Card.Footer>
       </Card>
+      <AuthTips title="Breached Passwords" cta="Learn more" url="https://auth0.com/breached-passwords">
+        Did you know that Auth0 maintains a continuously-updated collection of breached credentials, with hundreds of millions of entries. With no code you can upgrade your login flow so User's get notified when they use a breached password.
+      </AuthTips>
       <PictureModal show={modalShow} onHide={toggle} picture={'/study.gif'} size="xl" />
     </Layout>
     </div>

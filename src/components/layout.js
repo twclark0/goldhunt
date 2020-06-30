@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 import UserWidget from './user-widget'
+import AuthTips from './AuthTips'
 import Timer from './Timer'
 
 
@@ -15,7 +16,7 @@ export default function Layout({ children }) {
   return (
     <Container>
         <Row>
-          <Col><Timer start={true}></Timer></Col>
+          <Col></Col>
           <Col xs={12} md={6}>{children}</Col>
           <Col>
             <UserWidget></UserWidget>

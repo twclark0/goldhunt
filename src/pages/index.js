@@ -5,6 +5,11 @@ import Container from 'react-bootstrap/Container';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row'
+
+import Image from 'react-bootstrap/Image'
 
 import { useAuth0 } from "@auth0/auth0-react"
 
@@ -16,26 +21,43 @@ const Home = () => {
     // console.log(`Authenticated = ${isAuthenticated}`)
     return (
         <Container className="p-3">
-            <Jumbotron className="pb-1">
-                <h1 className="header">Welcome to Gatsby Auth0</h1>
-                <h2 className="header">Using Sass with custom theming</h2>
-                <h3>{isAuthenticated}</h3>
-                <hr />
-                <p>
+            <Row>
+            <Col></Col>
+            <Col xs={12} md={6}>
+                <Card className="text-center mt-3" border="dark">
+                    <Card.Body>
+                        <Card.Title>
+                            <Image src="/gold.png" style={{width:200}} />
+                            <br/>
+                            The Hunt for Vittorio's Gold
+                        </Card.Title>
+
+                        <Card.Text>
+                        {isAuthenticated ? (
+                            <p>You enter the Mansion and see a drinking lounge to the left, a reading room to the right. Which way shall you go?</p>
+                        ) : (
+                            <div>You stand outside Vittorio Manor, quite possibly the most secure property that exists. Dreading the multi-factor, multi-room authentication system he is sure to have implemented, you step up to the massive doors. A small sign says "Login with Auth0 please". Go figure.
+                            <br/>
+                            <Button onClick={() => loginWithRedirect()} className="btn-block btn btn-success mt-5">
+                              Login
+                            </Button>
+                            </div>
+                        )}
                     
-                    {isAuthenticated ? (
-                        <div>
-                        <Link to="/account" className="btn btn-danger" variant="danger">Account</Link>
-                        <Link to="/study" className="btn btn-primary large" variant="primary">Enter the Mansion</Link>
-                        <Button onClick ={() => logout()} variant="success">Log Out</Button>
-                        </div>
-                      ) : (
-                        <Button onClick={() => loginWithRedirect()} className="btn btn-success">
-                          Login
-                        </Button>
-                      )}
-                </p>
-            </Jumbotron>
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer>
+                        {isAuthenticated && (
+                            <div>
+                            <Link to="/study" className="btn btn-primary large" variant="primary">Enter the Mansion</Link>
+                            <Button className="ml-5" onClick ={() => logout()} variant="success">Log Out</Button>
+                            </div>
+                        )}
+                    </Card.Footer>
+                </Card>
+            </Col>
+            <Col></Col></Row>
+            
         </Container>
     )
 }

@@ -1,8 +1,31 @@
 /* make the customizations */
-$theme-colors: (
-        "info": tomato,
-        "danger": teal
-);
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
 
+$gray-100: #F9F9FB !default;
+$gray-200: #e9ecef !default;
+$gray-300: #E3E5E7 !default;
+$gray-400: #CDD2D4 !default;
+$gray-500: #A5A8A8 !default;
+$gray-600: #6c757d !default;
+$gray-700: #606060 !default;
+$gray-800: #484848 !default;
+$gray-900: #242424 !default;
+$blue:    #1071F2 ;
+$purple:  #845BEA ;
+$pink:    #D88BCE ;
+$red:     #CB4C48 ;
+$orange:  #EB5424 ;
+$yellow:  #E5AF44 ;
+$green:   #49AC6F ;
+$teal:    #AD56A7 ;
+$cyan:    #0080FF ;
+$theme-colors: (
+        "primary":#EB5424,
+);
+$font-family-base: 'Inter', sans-serif;
 /* import bootstrap to set changes */
 @import "../node_modules/bootstrap/scss/bootstrap";

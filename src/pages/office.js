@@ -43,7 +43,7 @@ const Office = () => {
           <hr/>
           <Button variant="light" size="sm" onClick={toggle}>Inspect the Scrap</Button>
 
-          <Form className="text-justify" onSubmit={handleSubmit}>
+          <Form className="text-justify mt-3" onSubmit={handleSubmit}>
             <Row>
               <Col><Form.Control name="ltr0" size="lg" type="text" placeholder="Hello there, who's this?" value={answer} onChange={handleInputChange} /></Col>
             </Row>

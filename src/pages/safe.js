@@ -11,7 +11,7 @@ import Card from 'react-bootstrap/Card';
 import Layout from '../components/layout';
 import PictureModal from '../components/PictureModal';
 
-const puzzleAnswer = process.env.OFFICE_ANSWER || "2858810";
+const puzzleAnswer = process.env.SAFE_ANSWER;
 
 const Safe = () => {
   const answers = {
@@ -55,7 +55,7 @@ const Safe = () => {
           <Button variant="light" size="sm" onClick={toggle}>Inspect the room</Button>
           <br/>
 
-          <Form className="text-justify" onSubmit={handleSubmit}>
+          <Form className="text-justify mt-3" onSubmit={handleSubmit}>
             <Row>
               <Col><Form.Control name="num0" size="lg" type="text" placeholder="left" value={answer.num0} onChange={handleInputChange} /></Col>
               <Col><Form.Control name="num1" size="lg" type="text" placeholder="right" value={answer.num1} onChange={handleInputChange} /></Col>
