@@ -6,6 +6,7 @@
 
 body {
   background-size:cover;
+  background-color:$gray-600;
   background-image: url('/floorplan.png');
 }
 
@@ -23,7 +24,7 @@ span {
 .mt-puz {
   margin-top: ($spacer * 10);
 }
-.background {
+#background {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -37,7 +38,7 @@ span {
   &.library {
     background-image: url('/bookshelf.gif');
   }
-  &.office {
+  &.office, &.safe {
     background-image: url('/office.png');
   }
 }

@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react"
 import { Link } from "gatsby"
 
 import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form'
 import Image from 'react-bootstrap/Image'
@@ -26,6 +27,7 @@ const Library = () => {
   const [modalShow, setModalShow] = useState(false);
   const [correct, setCorrect] = useState(false);
   const [answer, setAnswer] = useState(answers);
+  const [alertShow, setAlertShow] = useState(false);
 
   const handleInputChange = event => {
     const target = event.target
@@ -41,15 +43,36 @@ const Library = () => {
     event.preventDefault();
     const concanswer = Object.values(answer).join('').toLowerCase()
     setCorrect(concanswer === puzzleAnswer);
+    setAlertShow(true);
   }
   return (
-    <div className = "background library">
-    <Layout>
+    <Layout
+      title="Passwordless" 
+      cta="Really? No Passwords?" 
+      url="https://auth0.com/passwordless/"
+      content="It’s clear that passwords are not fun anymore. According to the website haveibeenpwned.com, 220,385,281 accounts were exposed in the top 10 breaches, and 152,450,038 of them were compromised this past year. Remove the risk! Auth0 Passwordless is a drop-in authentication system based on Email or SMS, that improves security and user experience."
+    >
+      <Alert show={alertShow} variant={correct ? 'success' : 'danger'} dismissible onClick={() => setAlertShow(false)}>
+        <Alert.Heading>
+          {correct ? (
+            "Correct Guess"
+          ) : (
+            "Wrong Submission"
+          )}
+        </Alert.Heading>
+        <p>
+          {correct ? (
+            "“SECURE - very clever, Vittorio...” you think to yourself as you realize this was a clue meant to distract you from your main objective.  You press on."
+          ) : (
+            "Hmmm... you might want to think about all the possible combos."
+          )}
+        </p>
+      </Alert>
       <Card className="text-center mt-3" border="dark">
         <Card.Header>The Bookshelf</Card.Header>
         <Card.Body>
           <Card.Title>Something missing</Card.Title>
-          <Card.Text> Ahead the bookshelf looks distrubed. As you approach, one book is less dusty than the others-- you open it. What's this? An old newspaper clipping? What could this mean?</Card.Text>
+          <Card.Text> Ahead the bookshelf looks disturbed. As you approach, one book is less dusty than the others-- you open it. What's this? An old newspaper clipping? What could this mean?</Card.Text>
           <hr/>
           <Button variant="light" size="sm" onClick={toggle}>Inspect the Paper</Button>
           <br/>
@@ -76,12 +99,8 @@ const Library = () => {
         </Card.Body>
         <Card.Footer className="text-muted">Enter the Passphrase</Card.Footer>
       </Card>
-      <AuthTips title="Breached Passwords" cta="Learn more" url="https://auth0.com/breached-passwords">
-        Did you know that Auth0 maintains a continuously-updated collection of breached credentials, with hundreds of millions of entries. With no code you can upgrade your login flow so User's get notified when they use a breached password.
-      </AuthTips>
       <PictureModal show={modalShow} onHide={toggle} picture={'/paper.gif'} size="lg" />
     </Layout>
-    </div>
   )
 }
 

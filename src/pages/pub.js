@@ -4,13 +4,14 @@ import { Link } from "gatsby"
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form'
+import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
+
 import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Layout from '../components/layout';
 import PictureModal from '../components/PictureModal';
-import AuthTips from '../components/AuthTips';
 
 const puzzleAnswer = (process.env.GATSBY_PUB_ANSWER).split("").map(x=>+x);
 
@@ -18,6 +19,7 @@ const Pub = () => {
   const [modalShow, setModalShow] = useState(false);
   const [correct, setCorrect] = useState(false);
   const [answer, setAnswer] = useState([0,0,0,0,0,0,0,0,0]);
+  const [alertShow, setAlertShow] = useState(false);
 
   const handleInputChange = event => {
     const target = event.target
@@ -42,11 +44,29 @@ const Pub = () => {
   const handleSubmit = event => {
     event.preventDefault();
     setCorrect(checkAnswerArray(answer, puzzleAnswer));
-    console.log(checkAnswerArray(answer, puzzleAnswer))
+    setAlertShow(true);
   }
   return (
-    <div className = "background pub">
-    <Layout>
+    <Layout title="Secure access for everyone, but not just anyone." 
+      cta="Learn more" 
+      url="https://auth0.com/security"
+      content="Auth0 understands that your customer's safety is top of mind. We've built a developer-first product that allows you to innovate on your onboarding flow without compromising security. We'll keep the locks up-to-date while you remodel the house :)">
+      <Alert show={alertShow} variant={correct ? 'success' : 'danger'} dismissible onClick={() => setAlertShow(false)}>
+        <Alert.Heading>
+          {correct ? (
+            "Correct Guess"
+          ) : (
+            "Wrong Submission"
+          )}
+        </Alert.Heading>
+        <p>
+          {correct ? (
+            "With a reluctant *creeeeeaaaak* the door behind the bar opens, revealing a secret office."
+          ) : (
+            "You realize brute force isn’t going to work on this one, but you decide to try again."
+          )}
+        </p>
+      </Alert>
       <Card className="text-center mt-3" border="dark">
         <Card.Header>The Pub</Card.Header>
         <Card.Body>
@@ -54,7 +74,7 @@ const Pub = () => {
           <Card.Text className="text-left">
             <Row>
               <Col sm={3}><Image src="/pub-box.gif" style={{ height: '180px' }} thumbnail /></Col>
-              <Col sm={9}> A pub is a place for social vibrance and open laughter, not somewhere to hide things. So it's surprising to find a control box in the corner with a set of switches. Do these unlock the next door? What is the pattern?
+              <Col sm={9}> A parlour is a place for social vibrance and open laughter, not somewhere to hide things. So it's surprising to find a control box in the corner with a set of switches. Do these unlock the next door? What is the pattern?
                 <hr/>
                 <Button variant="light" size="sm" onClick={toggle}>Inspect the Room</Button>
               </Col>
@@ -163,12 +183,8 @@ const Pub = () => {
         </Card.Body>
         <Card.Footer className="text-muted">Flip the switches.</Card.Footer>
       </Card>
-      <AuthTips title="Secure access for everyone, but not just anyone." cta="Learn more" url="https://auth0.com/security">
-        Auth0 understands that your customer's safety is top of mind. We've built a developer-first product that allows you to innovate on your onboarding flow without compromising security. We'll keep the locks up-to-date while you remodel the house :)
-      </AuthTips>
       <PictureModal show={modalShow} onHide={toggle} picture={'./pub.gif'} size="xl" />
     </Layout>
-    </div>
   )
 }
 

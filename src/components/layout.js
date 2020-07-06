@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { withAuth0 } from '@auth0/auth0-react';
 
 import Container from 'react-bootstrap/Container';
@@ -7,21 +7,43 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-import UserWidget from './user-widget'
-import AuthTips from './AuthTips'
-import Timer from './Timer'
+import UserWidget from '../components/user-widget'
+import AuthTips from '../components/AuthTips'
+import Footer from '../components/Footer';
+import Timer from '../components/Timer'
 
+import Image from 'react-bootstrap/Image'
+import logo from '../auth0-logo.svg'
 
-export default function Layout({ children }) {
+const Layout = (props) => {
+  useEffect(() => {
+      const path = window.location.pathname.split("/").pop();
+      const bg = document.getElementById("background");
+      bg.classList.add(path);
+  }) 
+
   return (
-    <Container>
+    <div id="background">
+      <Container>
         <Row>
-          <Col></Col>
-          <Col xs={12} md={6}>{children}</Col>
+          <Col>
+            {!props.final && (
+              <AuthTips 
+                {...props}
+              >{props.content}
+              </AuthTips>
+            )}
+          </Col>
+          <Col xs={12} md={6}>{props.children}</Col>
           <Col>
             <UserWidget></UserWidget>
           </Col>
         </Row>
-    </Container>
+      </Container>
+      <Footer>
+        <small className="mt-3">Powered by <Image src={logo} style={{width:60}} rounded /></small></Footer>
+    </div>
   )
 }
+
+export default Layout;
