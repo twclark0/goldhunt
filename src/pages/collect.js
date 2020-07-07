@@ -51,7 +51,7 @@ const Finish = () => {
   }, []);
 
   return (
-    <Container className={window.location.pathname.split("/").pop()}>
+    <Container>
       <Row>
         <Col></Col>
         <Col xs={12} md={6}>

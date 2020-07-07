@@ -11,7 +11,6 @@ import Card from 'react-bootstrap/Card';
 import UserWidget from '../components/user-widget'
 import AuthTips from '../components/AuthTips'
 import Footer from '../components/Footer';
-import Timer from '../components/Timer'
 
 import Image from 'react-bootstrap/Image'
 import logo from '../auth0-logo.svg'
