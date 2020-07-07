@@ -111,15 +111,7 @@ const UserWidget = (props) => {
       <Card border="dark" className="mt-3">
         <Card.Img variant="top" src={user.picture} />
         <Card.Body>
-          <Card.Title>{user.nickname || user.name}</Card.Title>
-          <Card.Text>
-            {userMetadata ? (
-              <p><b>Score: </b>{userMetadata.score}</p>
-            ) : (
-              "No user metadata defined"
-            )}
-          </Card.Text>
-          <Link to="/" className="btn btn-secondary">Home</Link>
+          <Card.Text>{user.name || user.nickname}</Card.Text>
         </Card.Body>
       </Card>
     )

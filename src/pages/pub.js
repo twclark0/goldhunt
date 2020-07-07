@@ -76,7 +76,7 @@ const Pub = () => {
               <Col sm={3}><Image src="/pub-box.gif" style={{ height: '180px' }} thumbnail /></Col>
               <Col sm={9}> A parlour is a place for social vibrance and open laughter, not somewhere to hide things. So it's surprising to find a control box in the corner with a set of switches. Do these unlock the next door? What is the pattern?
                 <hr/>
-                <Button variant="light" size="sm" onClick={toggle}>Inspect the Room</Button>
+                <Button variant="secondary" size="sm" onClick={toggle}>Inspect the Room</Button>
               </Col>
             </Row>
             

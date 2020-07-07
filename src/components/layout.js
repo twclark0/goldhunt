@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { withAuth0 } from '@auth0/auth0-react';
+import { useLocation } from '@reach/router'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -17,9 +18,10 @@ import logo from '../auth0-logo.svg'
 
 const Layout = (props) => {
   const [room, setRoom] = useState();
+  const href = useLocation();
 
   useEffect(() => {
-    const path = window.location.pathname.split("/").pop();
+    const path = href.pathname.split("/").pop();
     setRoom(path);
     const bg = document.getElementById("background");
     bg.classList.add(path);
