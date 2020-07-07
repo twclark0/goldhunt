@@ -74,7 +74,7 @@ const Library = () => {
           <Card.Title>Something missing</Card.Title>
           <Card.Text> Ahead the bookshelf looks disturbed. As you approach, one book is less dusty than the others-- you open it. What's this? An old newspaper clipping? What could this mean?</Card.Text>
           <hr/>
-          <Button variant="light" size="sm" onClick={toggle}>Inspect the Paper</Button>
+          <Button variant="secondary" size="sm" onClick={toggle}>Inspect the Paper</Button>
           <br/>
           <br/>
           <Form className="text-justify" onSubmit={handleSubmit}>

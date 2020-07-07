@@ -29,7 +29,8 @@
     "pretty-ms": "7.0.0",
     "react": "^16.12.0",
     "react-bootstrap": "1.0.1",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-twitter-embed": "3.0.3"
   },
   "devDependencies": {
     "http-proxy-middleware": "1.0.4",

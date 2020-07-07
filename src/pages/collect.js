@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react"
 import { useAuth0 } from "@auth0/auth0-react"
 import { Link } from "gatsby"
+import { TwitterShareButton } from 'react-twitter-embed';
+
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -64,8 +66,12 @@ const Finish = () => {
               <Card.Text>
                 As you flee from Vittorio’s manor, you realize you’re not out of the woods yet, there are still two very important steps to ensure your escape:
                 <br/>
-                <Button className="mt-3" href="" variant="success">Tweet about your victory</Button> <br/>to let other treasure hunters know of your accomplishment.
-                <br/>
+                
+                <b> Tweet about your victory to let other treasure hunters know of your accomplishment.</b>
+                <TwitterShareButton url="http://bit.ly/VittoriosMansion" options={{
+                  text: '😎 I just played this quick escape the room game from @auth0 and stole Vittorios gold. Plus I got a free shirt out of it! 😎',
+                  size: 'large',
+                }} placeholder="Loading" />
                 <Button className="mt-3" href={link} variant="warning">Order your free Auth0 tee-shirt</Button><br/> to commemorate your victory.
               </Card.Text>
             </Card.Body>
