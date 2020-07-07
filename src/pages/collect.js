@@ -13,7 +13,6 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const zapierHook = process.env.ZAPIER_URL;
 const apiKey = process.env.PRINTFECTION_KEY;
 
 const Finish = () => {
