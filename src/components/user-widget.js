@@ -8,6 +8,9 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+import api from '../utils/api';
+import scoreTools from '../utils/score';
+
 const domain = process.env.GATSBY_AUTH0_DOMAIN;
 
 const UserWidget = (props) => {
@@ -15,45 +18,14 @@ const UserWidget = (props) => {
   const [userMetadata, setUserMetadata] = useState(null);
   const [timer, setTimer] = useState(0);
   const [fetched, setFetched] = useState(false);
+  const [room, setRoom] = useState('');
   let startTime;
   let endTime;
-
-  const updateScore = async () => {
-    startTime = userMetadata ? userMetadata.score : Date.now();
-    endTime = Date.now() - startTime;
-    setTimer(endTime);
-    console.log(`Started Time!: ${startTime}. End Time: ${endTime}`);
-    await updateUserMetadata();
-    return 1;
-  }
 
   const updateUserMetadata = async () => {
     // request token again
     try {
-      const accessToken = await getAccessTokenSilently({
-        audience: `https://${domain}/api/v2/`,
-        scope: "read:current_user update:current_user_metadata create:current_user_metadata",
-      });
-
-      const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
-      const attempts = userMetadata ? userMetadata.attempts + 1 : 1;
-      const addTime = userMetadata.score + timer;
-      await setUserMetadata({...userMetadata, 'score': addTime, 'attempts': attempts});
-      await fetch(userDetailsByIdUrl, {
-        method: "PATCH",
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          'user_metadata': {
-            'score': userMetadata.score,
-            'attempts': userMetadata.attempts
-          }
-        })
-      });
-      return 1;
+      
     } catch (e) {
       console.log(e.message);
     }
@@ -71,8 +43,8 @@ const UserWidget = (props) => {
         },
       });
 
-      const { user_metadata} = await metadataResponse.json();
-      return user_metadata;
+      const user_data = await metadataResponse.json();
+      return user_data;
     } catch (e) {
       console.log(e.message);
     }
@@ -80,22 +52,59 @@ const UserWidget = (props) => {
 
   useEffect(() => {
 
-    const fetchMe = async () => {
-      const data = await getUserMetadata();
-      const set = await setUserMetadata(data);
-      console.log(data, set)
-      return set;
-    }
-    fetchMe();
+    // If first room
+    // if (props.room == 'study') {
+    //   // does user exist?
+    //   const createOrUpdateUser = async () => {
+    //     try {
+    //       const {email, nickname, user_id} = await getUserMetadata();
 
-    setTimeout(async () => {
-      console.log(userMetadata)
-      const f = await updateScore();
-      console.log(f);
-    }, 2000)
+    //       const startTime = await scoreTools.startTime();
+    //       const newUser = {
+    //         aid: user_id,
+    //         name: nickname,
+    //         email: email,
+    //         startTime: startTime,
+    //         score: 0
+    //       }
+    //       const exists = await api.search(newUser);
+    //       setUserMetadata(newUser);
+    //       if (exists.length > 0) {
+    //         await api.update(exists[0].id, newUser)
+    //         return
+    //       } else {
+    //         const u = await api.create(newUser);
+    //         console.log(u);
+    //       }
+          
+    //       console.log(userMetadata);
+    //     } catch(err) {
+    //       console.log(err.message);
+    //     }
+        
+    //   }
+    //   createOrUpdateUser();
+    // }
+
+    // if (props.room == 'library') {
+    //   const updateScore = async () => {
+    //     const udata = await getUserMetadata();
+    //     const su = await api.search(udata);
+    //     const dbUser = await api.read(su[0].id)
+    //     const score = scoreTools.timeElapsed(dbUser.startTime);
+    //     const updateUser = api.update(dbUser[0].id, {score:score})
+    //   }
+    //   updateScore()
+    // }
+    
+    if (!props.room) {
+      setInterval(setRoom(props.room), 1000)
+    }
+
+    
 
     // If you just hacked your own userMetadata, congrats you've won a special prize. Come find me at:
-  }, []);
+  }, [room]);
   
   return (
     isAuthenticated && (

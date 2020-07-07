@@ -12,6 +12,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const zapierHook = process.env.ZAPIER_URL;
+const apiKey = process.env.PRINTFECTION_KEY;
 
 const Finish = () => {
   const { user, isAuthenticated } = useAuth0();
@@ -21,28 +22,29 @@ const Finish = () => {
   useEffect(() => {
 
     const triggerLink = async () => {
-      const email = isAuthenticated ? user.email : 'guest';
-      const zlink = await fetch(zapierHook, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          'email': email
-        })
-      });
-      const z = await zlink.json();
-      // setLink(zlink);
-      console.log(z);
+      const api = await fetch('https://api.printfection.com/v2/orders', 
+        {
+          body: JSON.stringify({ campaign_id: 284773 }),
+          method: 'POST',
+          headers: {
+            'Authorization': "Basic " + btoa(apiKey + ":"),
+            'Content-Type': 'application/json'
+          },
+        }
+      )
+      return api.json();
     }
 
-    try {
-      triggerLink();
-    } catch (e) {
-      console.log(e.message);
+    const getLink = async () => {
+      try {
+        const lnk = await triggerLink();
+        setLink(lnk.url);
+      } catch (e) {
+        console.log(e.message);
+      }
     }
 
+    getLink()
     // If you just hacked your own userMetadata, congrats you've won a special prize. Come find me at:
   }, []);
 
@@ -62,9 +64,9 @@ const Finish = () => {
               <Card.Text>
                 As you flee from Vittorio’s manor, you realize you’re not out of the woods yet, there are still two very important steps to ensure your escape:
                 <br/>
-                <Button className="mt-3" href={link} variant="success">Tweet about your victory</Button> <br/>to let other treasure hunters know of your accomplishment.
+                <Button className="mt-3" href="" variant="success">Tweet about your victory</Button> <br/>to let other treasure hunters know of your accomplishment.
                 <br/>
-                <Button className="mt-3" href="" variant="warning">Order your free Auth0 tee-shirt</Button><br/> to commemorate your victory.
+                <Button className="mt-3" href={link} variant="warning">Order your free Auth0 tee-shirt</Button><br/> to commemorate your victory.
               </Card.Text>
             </Card.Body>
           </Card>

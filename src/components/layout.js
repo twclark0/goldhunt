@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { withAuth0 } from '@auth0/auth0-react';
 
 import Container from 'react-bootstrap/Container';
@@ -16,10 +16,13 @@ import Image from 'react-bootstrap/Image'
 import logo from '../auth0-logo.svg'
 
 const Layout = (props) => {
+  const [room, setRoom] = useState();
+
   useEffect(() => {
-      const path = window.location.pathname.split("/").pop();
-      const bg = document.getElementById("background");
-      bg.classList.add(path);
+    const path = window.location.pathname.split("/").pop();
+    setRoom(path);
+    const bg = document.getElementById("background");
+    bg.classList.add(path);
   }) 
 
   return (
@@ -36,7 +39,7 @@ const Layout = (props) => {
           </Col>
           <Col xs={12} md={6}>{props.children}</Col>
           <Col>
-            <UserWidget></UserWidget>
+            <UserWidget room={room}></UserWidget>
           </Col>
         </Row>
       </Container>
