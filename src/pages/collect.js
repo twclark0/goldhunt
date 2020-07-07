@@ -13,7 +13,7 @@ import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const apiKey = process.env.PRINTFECTION_KEY;
+const apiKey = process.env.GATSBY_PRINTFECTION_KEY;
 
 const Finish = () => {
   const { user, isAuthenticated } = useAuth0();
