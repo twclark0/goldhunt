@@ -1,8 +1,0 @@
-[build]
-  command = "npm run build"
-  functions = "functions"
-  publish = "public"
-
-[dev]
-  # Local dev command. A.k.a npm start
-  command = "npm run develop"
