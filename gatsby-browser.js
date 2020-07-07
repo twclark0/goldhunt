@@ -11,7 +11,7 @@ exports.wrapRootElement = ({ element }) => {
 		<Auth0Provider
 	    domain={authDomain}
 	    clientId={authClientID}
-	    redirectUri={window.location.origin}
+	    redirectUri="https://affectionate-saha-23d10d.netlify.app"
 	    audience={audienceURL}
 	    scope="read:current_user update:current_user_metadata"
 	    >
