@@ -56,7 +56,6 @@ const Study = ({location}) => {
       user: user,
       getAccessTokenSilently: getAccessTokenSilently
     })
-    console.log(opted)
   }, [])
 
   return (
