@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import { useAuth0 } from "@auth0/auth0-react"
 import { Link } from "gatsby"
 
@@ -11,9 +11,11 @@ import Card from 'react-bootstrap/Card';
 
 import PictureModal from '../components/PictureModal';
 import Layout from '../components/layout';
+import AuthUser from '../utils/AuthUser';
 
 const puzzleAnswer = process.env.GATSBY_STUDY_ANSWER;
-const Study = () => {
+const Study = ({location}) => {
+  const { user, getAccessTokenSilently } = useAuth0();
   const answers = {
     num0: "",
     num1: "",
@@ -47,6 +49,16 @@ const Study = () => {
     setCorrect(concanswer === puzzleAnswer);
     setAlertShow(true);
   }
+
+  useEffect(() => {
+    const opted = AuthUser.update({
+      optIn: location.state.optIn,
+      user: user,
+      getAccessTokenSilently: getAccessTokenSilently
+    })
+    console.log(opted)
+  }, [])
+
   return (
     <Layout
       title="Breached Passwords" 
