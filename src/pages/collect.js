@@ -79,7 +79,7 @@ const Finish = () => {
             <Alert.Heading>
               What's next?
             </Alert.Heading>
-            <p className="pt-3">On August 7th we’ll know which treasure hunters retrieved Vittorio’s Golden Tokens the fastest - the top 10 will be notified via email and will receive a $100 gift card.</p>
+            <p className="pt-3">Before August 14th we’ll know which treasure hunters retrieved Vittorio’s Golden Tokens - 10 will be randomly selected to receive a $100 gift card and will be notified by email.</p>
 
             <p>Curious about more things Auth0? <Button size="sm" variant="light" href="https://events.bizzabo.com/226371">Request a meeting</Button> with an Auth0 Solution Engineer.</p>
           </Alert>

@@ -68,7 +68,7 @@ const Home = () => {
 								<Button className="ml-5" onClick ={() => logout()} variant="success">Log Out</Button>
 								</div>
 							) : (
-								<small>By logging into this challenge you agree to Auth0’s terms of service, <a href="https://events.bizzabo.com/226371/page/1551441/contest-rules" target="_blank">privacy policy and contest rules.</a></small>
+								<small>By logging into this challenge you agree to Auth0’s terms of service, <a href="https://auth0.com/privacy/" target="_blank">privacy policy</a> and <a href="https://events.bizzabo.com/226371/page/1551441/contest-rules" target="_blank">contest rules</a>.</small>
 							)}
 							<hr/>
 						</Card.Footer>
